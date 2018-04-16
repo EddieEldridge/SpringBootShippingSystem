@@ -1,5 +1,9 @@
 package com.ships.services;
 
-public class OrderInfoService {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+public class OrderInfoService 
+{
 
 }
