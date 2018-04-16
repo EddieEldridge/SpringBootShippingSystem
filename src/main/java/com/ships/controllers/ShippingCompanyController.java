@@ -1,5 +1,6 @@
 package com.ships.controllers;
 
-public class ShippingCompanyController {
+public class ShippingCompanyController 
+{
 
 }
