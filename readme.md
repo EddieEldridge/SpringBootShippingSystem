@@ -56,7 +56,7 @@ For more information on concepts discussed and used in this program, please refe
 ## Software
 
 ## Resources
-
+[Spring with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 
 ## Acknowledgements
 
