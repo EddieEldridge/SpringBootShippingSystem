@@ -1,3 +1,30 @@
-table, th, td {
+table
+{
+    border-collapse: collapse;
+}
+
+table, th, td
+{
     border: 1px solid black;
+}
+
+body
+{
+    background-color: lightblue;
+}
+
+table.center 
+{
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+#center 
+{
+	    text-align: center;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
 }
