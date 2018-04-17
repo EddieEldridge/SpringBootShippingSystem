@@ -1,5 +1,9 @@
 package com.ships.controllers;
 
-public class ShippingCompanyController {
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ShippingCompanyController
+{
 
 }
