@@ -10,28 +10,26 @@ table, th, td {
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Show Ships</title>
+<title>Show Orders</title>
 </head>
 <body>
 
-<h1>Ship Details</h1>
+<h1>Order Details</h1>
 	
 	<h1></h1>
 		<table>
 			<tr>
-				<th>Name</th>
-				<th>Passengers</th>
-				<th>Cost</th>
-				<th>Length</th>
+				<th>Oid</th>
 				<th>Shipping Company</th>
+				<th>Ship</th>
+				<th>Date</th>
 			</tr>
-			<c:forEach items="${shipList}" var="shipList">
+			<c:forEach items="${orderList}" var="orderList">
 				<tr>
-					<td>${shipList.name}</td>
-					<td>${shipList.passengers}</td>
-					<td>${shipList.cost}</td>
-					<td>${shipList.metres}</td>
-					<td>${shipList.shippingCompany.name}</td>
+					<td>${orderList.oid}</td>
+					<td>${orderList.shippingCompany.name}</td>
+					<td>${orderList.ship.name}</td>
+					<td>${orderList.date}</td>
 				</tr>
 			</c:forEach>
 		</table>
