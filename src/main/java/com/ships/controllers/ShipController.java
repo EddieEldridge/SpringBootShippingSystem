@@ -52,6 +52,12 @@ public class ShipController
 		else
 		{
 			shipService.addShip(m);
+			
+			ArrayList<Ship> shipList = shipService.listAll();
+			
+			s.addAttribute("shipList", shipList);
+			
+			return "showShips";
 		}
 	}
 }

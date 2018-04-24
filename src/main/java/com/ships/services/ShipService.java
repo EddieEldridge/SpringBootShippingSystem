@@ -21,4 +21,9 @@ public class ShipService
 		// Find all elements in the 'Ship' table and put them in an ArrayList called 'ships', then return the Ship arrayList
 		return (ArrayList<Ship>) shipInterface.findAll();
 	}
+	
+	public Ship addShip(Ship ship) 
+	{
+		return shipInterface.save(ship);
+	}
 }
