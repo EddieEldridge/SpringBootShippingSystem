@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,7 +42,7 @@ public class OrderController
 	
 	// Create order method (GET)
 	@RequestMapping(value = "/addOrder", method = RequestMethod.GET)
-	public String getOrder(@ModelAttribute("addOrder") OrderInfo o, HttpServletRequest h, Model m) 
+	public String getOrder(@ModelAttribute("orderAdd") OrderInfo o, HttpServletRequest h, Model m) 
 	{
 		ArrayList<Ship> ships = shipService.listAll();
 		
@@ -70,5 +71,26 @@ public class OrderController
 	}
 	
 	// Create order method (POST)
-
+	@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
+	public String addShip(@ModelAttribute("orderAdd") OrderInfo o, BindingResult result, HttpServletRequest h, Model m) 
+	{
+		// If there are errors, refresh the page so the errors can be displayed
+		if (result.hasErrors())
+		{
+			return "addOrder";
+		}
+		
+		// If there are NO errors, proceeed to add the order
+		else 
+		{
+			shipService.addShip(o.getShip());
+			orderInfoService.addOrder(o);
+			
+			ArrayList<OrderInfo> orders = orderInfoService.listAll();
+	
+			m.addAttribute("orders", orders);
+		
+			return "redirect:showOrders";
+		}
+	}
 }
