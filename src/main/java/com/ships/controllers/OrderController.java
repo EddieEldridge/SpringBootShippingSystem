@@ -36,18 +36,18 @@ public class OrderController
 
 	// Setup our method to display all orders in the 'order' table
 	@RequestMapping(value = "/showOrders", method = RequestMethod.GET)
-	public String getOrders(Model s)
+	public String getOrders(Model model)
 	{
 		ArrayList<OrderInfo> orderList = orderInfoService.listAll();
 		
-		s.addAttribute("orderList", orderList);
+		model.addAttribute("orderList", orderList);
 		
 		return "showOrders";
 	}
 	
 	// Create order method (GET)
 	@RequestMapping(value = "/addOrder", method = RequestMethod.GET)
-	public String getOrder(@ModelAttribute("orderAdd") OrderInfo o, HttpServletRequest h, Model m) 
+	public String getOrder(@ModelAttribute("orderAdd") OrderInfo o, HttpServletRequest h, Model model) 
 	{
 		ArrayList<Ship> ships = shipService.listAll();
 		
@@ -56,12 +56,15 @@ public class OrderController
 		// For every ship
 		for (Ship s : ships)
 		{	
-			// Insert into orderList
+			if (s.getShippingCompany() == null)
+			{
 			orderShipList.put((long) s.getSid(), s.getName() + ", Cost = " + s.getCost());
+			}
 		}
 		
-		m.addAttribute("shippingList", orderShipList);
+		model.addAttribute("shippingList", orderShipList);
 		
+		// Create an array list of all our shipping companies from our Shipping Company Service
 		ArrayList<ShippingCompany> companies = shippingCompanyService.listAll();
 		
 		Map<Long,String> companyList = new HashMap<Long,String>();
@@ -71,33 +74,45 @@ public class OrderController
 			companyList.put((long) sc.getScid(), sc.getName() + ", Balance = " + sc.getBalance());
 		}
 		
-		m.addAttribute("orderCompanyList", companyList);
+		model.addAttribute("orderCompanyList", companyList);
 				
 		return "addOrder";
 	}
 	
 	// Create order method (POST)
 	@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
-	public String addShip(@Valid @ModelAttribute("orderAdd") OrderInfo o, BindingResult result, HttpServletRequest h, Model s) 
+	public String addShip(@Valid @ModelAttribute("orderAdd") OrderInfo o, BindingResult result, HttpServletRequest h, Model model) 
 	{
-		// If there are errors, refresh the page so the errors can be displayed
-		if (result.hasErrors())
+		// If there are errors, bring the user to the page so the errors can be displayed
+		if (o.getShip()==null)
 		{
-			System.out.println("Errors have occured");
-			return "addOrder";
+			System.out.println("Ship is null");
+			return "orderErrorPage";
+		}
+		else if(o.getShippingCompany()==null)
+		{
+			System.out.println("Shipping company is null");
+			return "orderErrorPage";
+		}
+		else if (o.getShip().getCost().compareTo(o.getShippingCompany().getBalance()) == (0|1))
+		{
+			System.out.println("Ship/Shipping company are null");
+			return "orderErrorPage";
 		}
 		
 		// If there are NO errors, proceeed to add the order
 		else 
 		{
+			o.getShippingCompany().setBalance(o.getShippingCompany().getBalance().subtract(o.getShip().getCost()));
+
 			shipService.addShip(o.getShip());
 			orderInfoService.addOrder(o);
 			
 			ArrayList<OrderInfo> orders = orderInfoService.listAll();
 	
-			s.addAttribute("orders", orders);
+			model.addAttribute("orders", orders);
 		
-			return "redirect:showOrders";
+			return "showOrders";
 		}
 	}
 }
