@@ -45,13 +45,15 @@ public class OrderInfoService
 		return (ArrayList<OrderInfo>) orderInterface.findAll();
 	}
 	
-	public OrderInfo save(OrderInfo order) {
+	public OrderInfo save(OrderInfo order)
+	{
 		
-		if (shipInterface.findOne((long) order.getShip().getSid()) != null) {
-			ship = shipInterface.findOne((long) order.getShip().getSid());
+		if (shipInterface.findOne(order.getShip().getSid()) != null)
+		{
+			ship = shipInterface.findOne(order.getShip().getSid());
 		}
 		
-		ShippingCompany = shippingCompanyInterface.findOne((long) order.getShippingCompany().getScid());
+		ShippingCompany = shippingCompanyInterface.findOne(order.getShippingCompany().getScid());
 		
 		ship.setShippingCompany(order.getShippingCompany());
 		
@@ -63,8 +65,4 @@ public class OrderInfoService
 		return orderInterface.save(order);
 	}
 	
-	public OrderInfo addOrder(OrderInfo order) 
-	{
-		return orderInterface.save(order);
-	}
 }

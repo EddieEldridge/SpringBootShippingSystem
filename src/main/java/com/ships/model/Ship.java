@@ -7,33 +7,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 public class Ship {
+	
 	@Id
 	@GeneratedValue
-	private int sid;
+	private Long sid;
+	
 	@NotNull
-    @Size(min=1,max=250)
+    @Size(min = 1,max = 250)
 	private String name;
+	
+	@NotNull
+	@Min(value = 0)
 	private int passengers;
+	
 	@NotNull
 	private BigDecimal cost;
+	
+	@NotNull
 	@Min(value = 1)
 	private double metres;
 	
 	@ManyToOne
-	@JoinColumn(name="scid")
+	@JoinColumn(name = "scid")
 	private ShippingCompany shippingCompany;
 		
-	public int getSid() {
+	public Long getSid() {
 		return sid;
 	}
-	public void setSid(int sid) {
+	public void setSid(Long sid) {
 		this.sid = sid;
 	}
 	public String getName() {
@@ -68,8 +75,7 @@ public class Ship {
 	}
 	@Override
 	public String toString() {
-		return "Ship [sid=" + sid + ", name=" + name + ", passengers=" + passengers + ", cost=" + cost + ", metres="
-				+ metres + ", shippingCompany=" + shippingCompany + "]";
+		return name + ", " + metres + "Mtrs, " +  cost + "\n";
 	}	
 	
 }

@@ -76,6 +76,7 @@ public class OrderController
 		
 		model.addAttribute("orderCompanyList", companyList);
 				
+	
 		return "addOrder";
 	}
 	
@@ -83,6 +84,11 @@ public class OrderController
 	@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
 	public String addShip(@Valid @ModelAttribute("orderAdd") OrderInfo o, BindingResult result, HttpServletRequest h, Model model) 
 	{
+		System.out.println("Ship: " +o.getShip());
+		System.out.println("Date: " +o.getDate());
+		System.out.println("Oid: " +o.getOid());
+		System.out.println("Shipping Company: " +o.getShippingCompany());
+
 		// If there are errors, bring the user to the page so the errors can be displayed
 		if (o.getShip()==null)
 		{
@@ -103,16 +109,18 @@ public class OrderController
 		// If there are NO errors, proceeed to add the order
 		else 
 		{
+			System.out.println("In Else statement");
 			o.getShippingCompany().setBalance(o.getShippingCompany().getBalance().subtract(o.getShip().getCost()));
 
+			orderInfoService.save(o);
 			shipService.addShip(o.getShip());
-			orderInfoService.addOrder(o);
+			shippingCompanyService.addShipCompany(o.getShippingCompany());
 			
 			ArrayList<OrderInfo> orders = orderInfoService.listAll();
 	
 			model.addAttribute("orders", orders);
 		
-			return "showOrders";
+			return "redirect:showOrders";
 		}
 	}
 }

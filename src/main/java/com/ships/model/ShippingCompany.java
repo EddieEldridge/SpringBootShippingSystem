@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.criteria.Order;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,28 +21,31 @@ public class ShippingCompany {
 	
 	@Id
 	@GeneratedValue
-	private int scid;
+	private Long scid;
+	
 	@NotNull
     @Size(min=1,max=250)
 	private String name;
+	
 	@NotNull
     @Size(min=1,max=250)
 	private String homePort;
+	
 	@NotNull
+	@Min(value = 1)
 	private BigDecimal balance;
-	@OneToMany(mappedBy="shippingCompany")
-	private List<Ship>  
-	ships = new ArrayList<Ship>();
 	
 	@OneToMany(mappedBy="shippingCompany")
-	private List<OrderInfo>
-	orders = new ArrayList<OrderInfo>();
+	private List<Ship> ships = new ArrayList<Ship>();
+	
+	@OneToMany(mappedBy="shippingCompany")
+	private List<OrderInfo> orders = new ArrayList<OrderInfo>();
 
 	
-	public int getScid() {
+	public Long getScid() {
 		return scid;
 	}
-	public void setScid(int scid) {
+	public void setScid(Long scid) {
 		this.scid = scid;
 	}
 	public String getName() {
@@ -70,8 +74,7 @@ public class ShippingCompany {
 	}
 	@Override
 	public String toString() {
-		return "ShippingCompany [scid=" + scid + ", name=" + name + ", homePort=" + homePort + ", balance=" + balance
-				+  "]";
+		return name + "; " + "Balance=" + balance;
 	}
 
 }
