@@ -84,26 +84,19 @@ public class OrderController
 	@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
 	public String addShip(@Valid @ModelAttribute("orderAdd") OrderInfo o, BindingResult result, HttpServletRequest h, Model model) 
 	{
-		System.out.println("Ship: " +o.getShip());
-		System.out.println("Date: " +o.getDate());
-		System.out.println("Oid: " +o.getOid());
-		System.out.println("Shipping Company: " +o.getShippingCompany());
 
 		// If there are errors, bring the user to the page so the errors can be displayed
 		if (o.getShip()==null)
 		{
-			System.out.println("Ship is null");
-			return "orderErrorPage";
+			return "noShipSelected";
 		}
 		else if(o.getShippingCompany()==null)
 		{
-			System.out.println("Shipping company is null");
-			return "orderErrorPage";
+			return "noCompanySelected";
 		}
 		else if (o.getShip().getCost().compareTo(o.getShippingCompany().getBalance()) == (0|1))
 		{
-			System.out.println("Ship/Shipping company are null");
-			return "orderErrorPage";
+			return "noMoney";
 		}
 		
 		// If there are NO errors, proceeed to add the order

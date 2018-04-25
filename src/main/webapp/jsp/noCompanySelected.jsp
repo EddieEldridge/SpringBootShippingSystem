@@ -8,7 +8,7 @@
 <title>Create Order</title>
 </head>
 <body>
-		<h1>There was an error adding a new order.</h1>
+		<h1>Please select a company.</h1>
 		<a href="/">Home</a>
 </body>
 </html>
