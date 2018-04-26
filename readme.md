@@ -59,22 +59,18 @@ Once the project is running in Eclipse, navigate to http://localhost:8080/ in yo
 ## Information
 For more information on concepts discussed and used in this program, please refer to the [Wiki](https://github.com/EddieEldridge/UnityZephyr/wiki) and resources below.
 
-## Documentation
-- GitHub readMe
-- [Wiki](https://github.com/EddieEldridge/UnityZephyr/wiki) for more information on concepts discussed in this project
-
 ## Technologies
-[Java](https://java.com/en/download/)
-[Spring](https://projects.spring.io/spring-framework/)
-[MySQL](https://www.mysql.com/)
+- [Java](https://java.com/en/download/)
+- [Spring](https://projects.spring.io/spring-framework/)
+- [MySQL](https://www.mysql.com/)
 
 ## Software
-[Eclipse](https://www.eclipse.org/)
-[Cmder](http://cmder.net/)
-[Wamp Server](http://www.wampserver.com/en/)
+- [Eclipse](https://www.eclipse.org/)
+- [Cmder](http://cmder.net/)
+- [Wamp Server](http://www.wampserver.com/en/)
 
 ## Resources
-[Spring with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
+- [Spring with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 
 ## Developers
 Edward Eldridge (G00337490)
