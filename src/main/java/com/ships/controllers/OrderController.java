@@ -113,6 +113,7 @@ public class OrderController
 	
 			model.addAttribute("orders", orders);
 		
+			// Once the order has been placed, redirect the user and refresh the page to show them the changes they just made
 			return "redirect:showOrders";
 		}
 	}

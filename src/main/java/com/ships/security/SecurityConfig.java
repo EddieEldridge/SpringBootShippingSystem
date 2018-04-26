@@ -13,15 +13,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	  public void configure(HttpSecurity httpSecurity) throws Exception
 	  {
 	    httpSecurity.authorizeRequests()
-	     .antMatchers("/addShip", "/addShippingCompany", "/addOrder")
-	     .hasRole("USER")
+	     .antMatchers("/addShip", "/addShippingCompany", "/addOrder")  // Add security prompt to the following pages
+	     .hasRole("USER") // Set the role to be user for the following pages
 	     .and()
-	     .formLogin();
+	     .formLogin(); // Create a login form for the user to enter their username and passwrod
 	  }
 	  
 	  @Autowired
 	  public void configureGlobal(AuthenticationManagerBuilder authentication) throws Exception
 	  {
+		  // Set username to 'user' and password to 'user' for any roles with 'USER'
 		  authentication.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 	  }
 }
