@@ -38,16 +38,17 @@ The Model for the application consists of three objects
 	* Order Date
 
 ## How to run the program
-First, clone the project from Git.
 
+### Clone/Download
 To clone the repository to your local machine, using your prefered command prompt, navigate to the folder you wish to download the files to and enter
 ```
 git clone https://github.com/EddieEldridge/SpringBootShippingSystem.git
 ```
-OR
+<b>OR</b>
 
 Use the green clone button and extract the contents of the .zip to a folder of your choice.
 
+### Run
 The program can be launched by importing the project in Eclipse and running it as a Spring Boot application.
 
 Please ensure you have [Spring Tools](https://marketplace.eclipse.org/content/spring-tools-aka-spring-ide-and-spring-tool-suite) installed in your Eclipse.
@@ -62,10 +63,15 @@ For more information on concepts discussed and used in this program, please refe
 - GitHub readMe
 - [Wiki](https://github.com/EddieEldridge/UnityZephyr/wiki) for more information on concepts discussed in this project
 
+## Technologies
+[Java](https://java.com/en/download/)
+[Spring](https://projects.spring.io/spring-framework/)
+[MySQL](https://www.mysql.com/)
+
 ## Software
 [Eclipse](https://www.eclipse.org/)
 [Cmder](http://cmder.net/)
-[Wamp](http://www.wampserver.com/en/)
+[Wamp Server](http://www.wampserver.com/en/)
 
 ## Resources
 [Spring with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
