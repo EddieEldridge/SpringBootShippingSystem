@@ -7,11 +7,10 @@
 ## Contents
 * [Description](#description)
 * [How to run](#how-to-run-the-program)
-* [Design](#design)
 * [Information](#information)
+* [Technologies](#technologies)
 * [Software](#Software)
 * [Resources](#resources)
-* [Wiki](https://github.com/EddieEldridge/UnityZephyr/wiki)
 
 ## Description
 The aim of this project was to develop a Spring Boot application that uses the Spring MVC n-tier architecture – Controllers, Services, Repositories, Views, with the appropriate data/logic in each tier.
