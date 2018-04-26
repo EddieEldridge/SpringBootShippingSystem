@@ -37,14 +37,23 @@ The Model for the application consists of three objects
 	* Associated Ship
 	* Order Date
 
-
-## Program
-
-
-## Design
-
-
 ## How to run the program
+First, clone the project from Git.
+
+To clone the repository to your local machine, using your prefered command prompt, navigate to the folder you wish to download the files to and enter
+```
+git clone https://github.com/EddieEldridge/SpringBootShippingSystem.git
+```
+OR
+
+Use the green clone button and extract the contents of the .zip to a folder of your choice.
+
+The program can be launched by importing the project in Eclipse and running it as a Spring Boot application.
+
+Please ensure you have [Spring Tools](https://marketplace.eclipse.org/content/spring-tools-aka-spring-ide-and-spring-tool-suite) installed in your Eclipse.
+
+Once the project is running in Eclipse, navigate to http://localhost:8080/ in your browser. From here you can use the program.
+
 
 ## Information
 For more information on concepts discussed and used in this program, please refer to the [Wiki](https://github.com/EddieEldridge/UnityZephyr/wiki) and resources below.
@@ -54,11 +63,12 @@ For more information on concepts discussed and used in this program, please refe
 - [Wiki](https://github.com/EddieEldridge/UnityZephyr/wiki) for more information on concepts discussed in this project
 
 ## Software
+[Eclipse](https://www.eclipse.org/)
+[Cmder](http://cmder.net/)
+[Wamp](http://www.wampserver.com/en/)
 
 ## Resources
 [Spring with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
-
-## Acknowledgements
 
 ## Developers
 Edward Eldridge (G00337490)
